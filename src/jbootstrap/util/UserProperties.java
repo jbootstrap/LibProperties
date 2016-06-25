@@ -1,3 +1,4 @@
+package jbootstrap.util;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -7,12 +8,12 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class HomeProperties {
+public class UserProperties {
     
     public final Properties prop = new Properties();
     public final File propFile;
 
-    public HomeProperties(Class clazz) {
+    public UserProperties(Class clazz) {
         String userHome = System.getProperty("user.home");
         String propDir = userHome + "\\" + ".home\\" + clazz.getName();
         new File(propDir).mkdirs();
@@ -26,7 +27,7 @@ public class HomeProperties {
         try {
             prop.storeToXML(new FileOutputStream(propFile), null);
         } catch (IOException ex) {
-            Logger.getLogger(HomeProperties.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserProperties.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     public String get(String key) {
@@ -53,7 +54,7 @@ public class HomeProperties {
         try {
             value = new sun.misc.BASE64Decoder().decodeBuffer(s);
         } catch (IOException ex) {
-            Logger.getLogger(HomeProperties.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserProperties.class.getName()).log(Level.SEVERE, null, ex);
         }
         return value;
     }
@@ -108,7 +109,7 @@ public class HomeProperties {
 
     public static void main(String[] args)
     {
-        HomeProperties hp = new HomeProperties(java.util.List.class);
+        UserProperties hp = new UserProperties(java.util.List.class);
         System.out.println(hp.getBoolean("a"));
         System.out.println(hp.getBoolean("b"));
         System.out.println(hp.get("c"));
