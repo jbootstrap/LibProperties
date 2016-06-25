@@ -1,4 +1,0 @@
-#FilePreferences
-#Sat Jun 25 21:01:32 JST 2016
-<unnamed>.hi=true
-<unnamed>.Number=1466856092664
